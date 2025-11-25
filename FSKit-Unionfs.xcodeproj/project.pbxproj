@@ -11,6 +11,9 @@
 		FB34D8FB2ED37DA4009243D4 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB34D8FA2ED37DA2009243D4 /* Constants.swift */; };
 		FB34D8FC2ED37DA9009243D4 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB34D8FA2ED37DA2009243D4 /* Constants.swift */; };
 		FB34D8FD2ED37DA9009243D4 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB34D8FA2ED37DA2009243D4 /* Constants.swift */; };
+		FB723B272ED6633A00E04C71 /* Readme.md in Sources */ = {isa = PBXBuildFile; fileRef = FB723B262ED6633700E04C71 /* Readme.md */; };
+		FB723B282ED6633A00E04C71 /* Readme.md in Sources */ = {isa = PBXBuildFile; fileRef = FB723B262ED6633700E04C71 /* Readme.md */; };
+		FB723B292ED6633A00E04C71 /* Readme.md in Sources */ = {isa = PBXBuildFile; fileRef = FB723B262ED6633700E04C71 /* Readme.md */; };
 		FBB2CF542ED223BD00A2413F /* unionfs.appex in Embed ExtensionKit Extensions */ = {isa = PBXBuildFile; fileRef = FBB2CF4A2ED223BD00A2413F /* unionfs.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		FBBE2A942ED342710004816C /* Semaphore in Frameworks */ = {isa = PBXBuildFile; productRef = FBBE2A932ED342710004816C /* Semaphore */; };
 /* End PBXBuildFile section */
@@ -77,6 +80,7 @@
 /* Begin PBXFileReference section */
 		FB34D8DD2ED376F5009243D4 /* UnionFS-Helper */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "UnionFS-Helper"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FB34D8FA2ED37DA2009243D4 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		FB723B262ED6633700E04C71 /* Readme.md */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Readme.md; sourceTree = "<group>"; };
 		FBB2CF382ED2238100A2413F /* FSKit-Unionfs.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "FSKit-Unionfs.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FBB2CF4A2ED223BD00A2413F /* unionfs.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.extensionkit-extension"; includeInIndex = 0; path = unionfs.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -164,6 +168,7 @@
 		FBB2CF2F2ED2238100A2413F = {
 			isa = PBXGroup;
 			children = (
+				FB723B262ED6633700E04C71 /* Readme.md */,
 				FB34D8FA2ED37DA2009243D4 /* Constants.swift */,
 				FBB2CF3A2ED2238100A2413F /* FSKit-Unionfs */,
 				FBB2CF4B2ED223BD00A2413F /* FSKit-Extension */,
@@ -332,6 +337,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FB723B282ED6633A00E04C71 /* Readme.md in Sources */,
 				FB34D8FD2ED37DA9009243D4 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -340,6 +346,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FB723B292ED6633A00E04C71 /* Readme.md in Sources */,
 				FB34D8FB2ED37DA4009243D4 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -348,6 +355,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FB723B272ED6633A00E04C71 /* Readme.md in Sources */,
 				FB34D8FC2ED37DA9009243D4 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
