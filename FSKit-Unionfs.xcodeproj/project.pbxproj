@@ -6,23 +6,155 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		FB34D8F42ED379AD009243D4 /* UnionFS-Helper in CopyFiles */ = {isa = PBXBuildFile; fileRef = FB34D8DD2ED376F5009243D4 /* UnionFS-Helper */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		FB34D8FB2ED37DA4009243D4 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB34D8FA2ED37DA2009243D4 /* Constants.swift */; };
+		FB34D8FC2ED37DA9009243D4 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB34D8FA2ED37DA2009243D4 /* Constants.swift */; };
+		FB34D8FD2ED37DA9009243D4 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB34D8FA2ED37DA2009243D4 /* Constants.swift */; };
+		FBB2CF542ED223BD00A2413F /* unionfs.appex in Embed ExtensionKit Extensions */ = {isa = PBXBuildFile; fileRef = FBB2CF4A2ED223BD00A2413F /* unionfs.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		FBBE2A942ED342710004816C /* Semaphore in Frameworks */ = {isa = PBXBuildFile; productRef = FBBE2A932ED342710004816C /* Semaphore */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		FB34D8F52ED379C0009243D4 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FBB2CF302ED2238100A2413F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = FB34D8DC2ED376F5009243D4;
+			remoteInfo = "UnionFS-Helper";
+		};
+		FBB2CF522ED223BD00A2413F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FBB2CF302ED2238100A2413F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = FBB2CF492ED223BD00A2413F;
+			remoteInfo = "FSKit-Extension";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		FB34D8DB2ED376F5009243D4 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+		FB34D8F02ED37989009243D4 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = Contents/Library/LaunchDaemons;
+			dstSubfolderSpec = 1;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FB34D8F32ED379A2009243D4 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 6;
+			files = (
+				FB34D8F42ED379AD009243D4 /* UnionFS-Helper in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FBB2CF592ED223BD00A2413F /* Embed ExtensionKit Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "$(EXTENSIONS_FOLDER_PATH)";
+			dstSubfolderSpec = 16;
+			files = (
+				FBB2CF542ED223BD00A2413F /* unionfs.appex in Embed ExtensionKit Extensions */,
+			);
+			name = "Embed ExtensionKit Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		FB34D8DD2ED376F5009243D4 /* UnionFS-Helper */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "UnionFS-Helper"; sourceTree = BUILT_PRODUCTS_DIR; };
+		FB34D8FA2ED37DA2009243D4 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		FBB2CF382ED2238100A2413F /* FSKit-Unionfs.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "FSKit-Unionfs.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		FBB2CF4A2ED223BD00A2413F /* unionfs.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.extensionkit-extension"; includeInIndex = 0; path = unionfs.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		FB34D8EC2ED377CA009243D4 /* Exceptions for "UnionFS-Helper" folder in "unionfs" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				HelperProtocol/HelperProtocol.swift,
+				HelperProtocol/TransferableFileAttributes.swift,
+				HelperProtocol/TransferableURLResourceValues.swift,
+			);
+			target = FBB2CF492ED223BD00A2413F /* unionfs */;
+		};
+		FBB2CF552ED223BD00A2413F /* Exceptions for "FSKit-Extension" folder in "unionfs" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = FBB2CF492ED223BD00A2413F /* unionfs */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
+/* Begin PBXFileSystemSynchronizedGroupBuildPhaseMembershipExceptionSet section */
+		FB34D8F22ED3799F009243D4 /* Exceptions for "UnionFS-Helper" folder in "Copy Files" phase from "FSKit-Unionfs" target */ = {
+			isa = PBXFileSystemSynchronizedGroupBuildPhaseMembershipExceptionSet;
+			buildPhase = FB34D8F02ED37989009243D4 /* CopyFiles */;
+			membershipExceptions = (
+				"io.noim.FSKit-Unionfs.helper.plist",
+			);
+		};
+/* End PBXFileSystemSynchronizedGroupBuildPhaseMembershipExceptionSet section */
+
 /* Begin PBXFileSystemSynchronizedRootGroup section */
+		FB34D8DE2ED376F5009243D4 /* UnionFS-Helper */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				FB34D8F22ED3799F009243D4 /* Exceptions for "UnionFS-Helper" folder in "Copy Files" phase from "FSKit-Unionfs" target */,
+				FB34D8EC2ED377CA009243D4 /* Exceptions for "UnionFS-Helper" folder in "unionfs" target */,
+			);
+			path = "UnionFS-Helper";
+			sourceTree = "<group>";
+		};
 		FBB2CF3A2ED2238100A2413F /* FSKit-Unionfs */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			path = "FSKit-Unionfs";
 			sourceTree = "<group>";
 		};
+		FBB2CF4B2ED223BD00A2413F /* FSKit-Extension */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				FBB2CF552ED223BD00A2413F /* Exceptions for "FSKit-Extension" folder in "unionfs" target */,
+			);
+			path = "FSKit-Extension";
+			sourceTree = "<group>";
+		};
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		FB34D8DA2ED376F5009243D4 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		FBB2CF352ED2238100A2413F /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FBB2CF472ED223BD00A2413F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FBBE2A942ED342710004816C /* Semaphore in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -32,7 +164,11 @@
 		FBB2CF2F2ED2238100A2413F = {
 			isa = PBXGroup;
 			children = (
+				FB34D8FA2ED37DA2009243D4 /* Constants.swift */,
 				FBB2CF3A2ED2238100A2413F /* FSKit-Unionfs */,
+				FBB2CF4B2ED223BD00A2413F /* FSKit-Extension */,
+				FB34D8DE2ED376F5009243D4 /* UnionFS-Helper */,
+				FBBE2A8F2ED340D30004816C /* Frameworks */,
 				FBB2CF392ED2238100A2413F /* Products */,
 			);
 			sourceTree = "<group>";
@@ -41,13 +177,44 @@
 			isa = PBXGroup;
 			children = (
 				FBB2CF382ED2238100A2413F /* FSKit-Unionfs.app */,
+				FBB2CF4A2ED223BD00A2413F /* unionfs.appex */,
+				FB34D8DD2ED376F5009243D4 /* UnionFS-Helper */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		FBBE2A8F2ED340D30004816C /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		FB34D8DC2ED376F5009243D4 /* UnionFS-Helper */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FB34D8E12ED376F5009243D4 /* Build configuration list for PBXNativeTarget "UnionFS-Helper" */;
+			buildPhases = (
+				FB34D8D92ED376F5009243D4 /* Sources */,
+				FB34D8DA2ED376F5009243D4 /* Frameworks */,
+				FB34D8DB2ED376F5009243D4 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				FB34D8DE2ED376F5009243D4 /* UnionFS-Helper */,
+			);
+			name = "UnionFS-Helper";
+			packageProductDependencies = (
+			);
+			productName = "UnionFS-Helper";
+			productReference = FB34D8DD2ED376F5009243D4 /* UnionFS-Helper */;
+			productType = "com.apple.product-type.tool";
+		};
 		FBB2CF372ED2238100A2413F /* FSKit-Unionfs */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = FBB2CF432ED2238200A2413F /* Build configuration list for PBXNativeTarget "FSKit-Unionfs" */;
@@ -55,10 +222,15 @@
 				FBB2CF342ED2238100A2413F /* Sources */,
 				FBB2CF352ED2238100A2413F /* Frameworks */,
 				FBB2CF362ED2238100A2413F /* Resources */,
+				FBB2CF592ED223BD00A2413F /* Embed ExtensionKit Extensions */,
+				FB34D8F32ED379A2009243D4 /* CopyFiles */,
+				FB34D8F02ED37989009243D4 /* CopyFiles */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				FB34D8F62ED379C0009243D4 /* PBXTargetDependency */,
+				FBB2CF532ED223BD00A2413F /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
 				FBB2CF3A2ED2238100A2413F /* FSKit-Unionfs */,
@@ -70,6 +242,29 @@
 			productReference = FBB2CF382ED2238100A2413F /* FSKit-Unionfs.app */;
 			productType = "com.apple.product-type.application";
 		};
+		FBB2CF492ED223BD00A2413F /* unionfs */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FBB2CF562ED223BD00A2413F /* Build configuration list for PBXNativeTarget "unionfs" */;
+			buildPhases = (
+				FBB2CF462ED223BD00A2413F /* Sources */,
+				FBB2CF472ED223BD00A2413F /* Frameworks */,
+				FBB2CF482ED223BD00A2413F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				FBB2CF4B2ED223BD00A2413F /* FSKit-Extension */,
+			);
+			name = unionfs;
+			packageProductDependencies = (
+				FBBE2A932ED342710004816C /* Semaphore */,
+			);
+			productName = "FSKit-Extension";
+			productReference = FBB2CF4A2ED223BD00A2413F /* unionfs.appex */;
+			productType = "com.apple.product-type.extensionkit-extension";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -77,10 +272,16 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 2610;
-				LastUpgradeCheck = 2610;
+				LastSwiftUpdateCheck = 2620;
+				LastUpgradeCheck = 2620;
 				TargetAttributes = {
+					FB34D8DC2ED376F5009243D4 = {
+						CreatedOnToolsVersion = 26.2;
+					};
 					FBB2CF372ED2238100A2413F = {
+						CreatedOnToolsVersion = 26.1.1;
+					};
+					FBB2CF492ED223BD00A2413F = {
 						CreatedOnToolsVersion = 26.1.1;
 					};
 				};
@@ -94,12 +295,17 @@
 			);
 			mainGroup = FBB2CF2F2ED2238100A2413F;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				FBBE2A922ED342710004816C /* XCRemoteSwiftPackageReference "Semaphore" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = FBB2CF392ED2238100A2413F /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
 				FBB2CF372ED2238100A2413F /* FSKit-Unionfs */,
+				FBB2CF492ED223BD00A2413F /* unionfs */,
+				FB34D8DC2ED376F5009243D4 /* UnionFS-Helper */,
 			);
 		};
 /* End PBXProject section */
@@ -112,21 +318,88 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-/* End PBXResourcesBuildPhase section */
-
-/* Begin PBXSourcesBuildPhase section */
-		FBB2CF342ED2238100A2413F /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
+		FBB2CF482ED223BD00A2413F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		FB34D8D92ED376F5009243D4 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FB34D8FD2ED37DA9009243D4 /* Constants.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FBB2CF342ED2238100A2413F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FB34D8FB2ED37DA4009243D4 /* Constants.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FBB2CF462ED223BD00A2413F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FB34D8FC2ED37DA9009243D4 /* Constants.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		FB34D8F62ED379C0009243D4 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = FB34D8DC2ED376F5009243D4 /* UnionFS-Helper */;
+			targetProxy = FB34D8F52ED379C0009243D4 /* PBXContainerItemProxy */;
+		};
+		FBB2CF532ED223BD00A2413F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = FBB2CF492ED223BD00A2413F /* unionfs */;
+			targetProxy = FBB2CF522ED223BD00A2413F /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin XCBuildConfiguration section */
+		FB34D8E22ED376F5009243D4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = P88CDRP8CR;
+				ENABLE_HARDENED_RUNTIME = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = "io.noim.FSKit-Unionfs.helper";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		FB34D8E32ED376F5009243D4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = P88CDRP8CR;
+				ENABLE_HARDENED_RUNTIME = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = "io.noim.FSKit-Unionfs.helper";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
 		FBB2CF412ED2238200A2413F /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReferenceAnchor = FBB2CF3A2ED2238100A2413F /* FSKit-Unionfs */;
+			baseConfigurationReferenceRelativePath = BuildNumber.xcconfig;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
@@ -159,6 +432,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEVELOPMENT_TEAM = P88CDRP8CR;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -184,6 +458,7 @@
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = macosx;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
@@ -191,6 +466,8 @@
 		};
 		FBB2CF422ED2238200A2413F /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReferenceAnchor = FBB2CF3A2ED2238100A2413F /* FSKit-Unionfs */;
+			baseConfigurationReferenceRelativePath = BuildNumber.xcconfig;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
@@ -223,6 +500,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = P88CDRP8CR;
 				ENABLE_NS_ASSERTIONS = NO;
@@ -241,6 +519,7 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = macosx;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SWIFT_COMPILATION_MODE = wholemodule;
 			};
 			name = Release;
@@ -252,12 +531,12 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = "$(CURRENT_PROJECT_VERSION)";
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = P88CDRP8CR;
-				ENABLE_APP_SANDBOX = YES;
+				ENABLE_APP_SANDBOX = NO;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
-				ENABLE_USER_SELECTED_FILES = readonly;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -284,12 +563,12 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = "$(CURRENT_PROJECT_VERSION)";
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = P88CDRP8CR;
-				ENABLE_APP_SANDBOX = YES;
+				ENABLE_APP_SANDBOX = NO;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
-				ENABLE_USER_SELECTED_FILES = readonly;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -309,9 +588,110 @@
 			};
 			name = Release;
 		};
+		FBB2CF572ED223BD00A2413F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = "FSKit-Extension/FSKit_Extension.entitlements";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Mac Developer";
+				CODE_SIGN_STYLE = Manual;
+				CURRENT_PROJECT_VERSION = "$(CURRENT_PROJECT_VERSION)";
+				DEAD_CODE_STRIPPING = YES;
+				DEVELOPMENT_TEAM = "";
+				"DEVELOPMENT_TEAM[sdk=macosx*]" = P88CDRP8CR;
+				ENABLE_APP_SANDBOX = YES;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_INCOMING_NETWORK_CONNECTIONS = NO;
+				ENABLE_OUTGOING_NETWORK_CONNECTIONS = NO;
+				ENABLE_RESOURCE_ACCESS_AUDIO_INPUT = NO;
+				ENABLE_RESOURCE_ACCESS_BLUETOOTH = NO;
+				ENABLE_RESOURCE_ACCESS_CALENDARS = NO;
+				ENABLE_RESOURCE_ACCESS_CAMERA = NO;
+				ENABLE_RESOURCE_ACCESS_CONTACTS = NO;
+				ENABLE_RESOURCE_ACCESS_LOCATION = NO;
+				ENABLE_RESOURCE_ACCESS_PRINTING = NO;
+				ENABLE_RESOURCE_ACCESS_USB = NO;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "FSKit-Extension/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = Unionfs;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@executable_path/../../../../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 26.1;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "io.noim.FSKit-Unionfs.FSKit-Extension";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=macosx*]" = "FSKit Unionfs";
+				SKIP_INSTALL = YES;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		FBB2CF582ED223BD00A2413F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = "FSKit-Extension/FSKit_Extension.entitlements";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Mac Developer";
+				CODE_SIGN_STYLE = Manual;
+				CURRENT_PROJECT_VERSION = "$(CURRENT_PROJECT_VERSION)";
+				DEAD_CODE_STRIPPING = YES;
+				DEVELOPMENT_TEAM = "";
+				"DEVELOPMENT_TEAM[sdk=macosx*]" = P88CDRP8CR;
+				ENABLE_APP_SANDBOX = YES;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_INCOMING_NETWORK_CONNECTIONS = NO;
+				ENABLE_OUTGOING_NETWORK_CONNECTIONS = NO;
+				ENABLE_RESOURCE_ACCESS_AUDIO_INPUT = NO;
+				ENABLE_RESOURCE_ACCESS_BLUETOOTH = NO;
+				ENABLE_RESOURCE_ACCESS_CALENDARS = NO;
+				ENABLE_RESOURCE_ACCESS_CAMERA = NO;
+				ENABLE_RESOURCE_ACCESS_CONTACTS = NO;
+				ENABLE_RESOURCE_ACCESS_LOCATION = NO;
+				ENABLE_RESOURCE_ACCESS_PRINTING = NO;
+				ENABLE_RESOURCE_ACCESS_USB = NO;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "FSKit-Extension/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = Unionfs;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@executable_path/../../../../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 26.1;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "io.noim.FSKit-Unionfs.FSKit-Extension";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=macosx*]" = "FSKit Unionfs";
+				SKIP_INSTALL = YES;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		FB34D8E12ED376F5009243D4 /* Build configuration list for PBXNativeTarget "UnionFS-Helper" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FB34D8E22ED376F5009243D4 /* Debug */,
+				FB34D8E32ED376F5009243D4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		FBB2CF332ED2238100A2413F /* Build configuration list for PBXProject "FSKit-Unionfs" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -330,7 +710,35 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
+		FBB2CF562ED223BD00A2413F /* Build configuration list for PBXNativeTarget "unionfs" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FBB2CF572ED223BD00A2413F /* Debug */,
+				FBB2CF582ED223BD00A2413F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		FBBE2A922ED342710004816C /* XCRemoteSwiftPackageReference "Semaphore" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/groue/Semaphore";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.1.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		FBBE2A932ED342710004816C /* Semaphore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = FBBE2A922ED342710004816C /* XCRemoteSwiftPackageReference "Semaphore" */;
+			productName = Semaphore;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = FBB2CF302ED2238100A2413F /* Project object */;
 }
