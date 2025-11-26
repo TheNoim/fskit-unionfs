@@ -11,9 +11,7 @@
 		FB34D8FB2ED37DA4009243D4 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB34D8FA2ED37DA2009243D4 /* Constants.swift */; };
 		FB34D8FC2ED37DA9009243D4 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB34D8FA2ED37DA2009243D4 /* Constants.swift */; };
 		FB34D8FD2ED37DA9009243D4 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB34D8FA2ED37DA2009243D4 /* Constants.swift */; };
-		FB723B272ED6633A00E04C71 /* Readme.md in Sources */ = {isa = PBXBuildFile; fileRef = FB723B262ED6633700E04C71 /* Readme.md */; };
-		FB723B282ED6633A00E04C71 /* Readme.md in Sources */ = {isa = PBXBuildFile; fileRef = FB723B262ED6633700E04C71 /* Readme.md */; };
-		FB723B292ED6633A00E04C71 /* Readme.md in Sources */ = {isa = PBXBuildFile; fileRef = FB723B262ED6633700E04C71 /* Readme.md */; };
+		FB723B3C2ED77E2B00E04C71 /* Command in Frameworks */ = {isa = PBXBuildFile; productRef = FB723B3B2ED77E2B00E04C71 /* Command */; };
 		FBB2CF542ED223BD00A2413F /* unionfs.appex in Embed ExtensionKit Extensions */ = {isa = PBXBuildFile; fileRef = FBB2CF4A2ED223BD00A2413F /* unionfs.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		FBBE2A942ED342710004816C /* Semaphore in Frameworks */ = {isa = PBXBuildFile; productRef = FBBE2A932ED342710004816C /* Semaphore */; };
 /* End PBXBuildFile section */
@@ -25,6 +23,13 @@
 			proxyType = 1;
 			remoteGlobalIDString = FB34D8DC2ED376F5009243D4;
 			remoteInfo = "UnionFS-Helper";
+		};
+		FB723B322ED6F5DC00E04C71 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FBB2CF302ED2238100A2413F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = FBB2CF372ED2238100A2413F;
+			remoteInfo = "FSKit-Unionfs";
 		};
 		FBB2CF522ED223BD00A2413F /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -81,6 +86,7 @@
 		FB34D8DD2ED376F5009243D4 /* UnionFS-Helper */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "UnionFS-Helper"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FB34D8FA2ED37DA2009243D4 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		FB723B262ED6633700E04C71 /* Readme.md */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Readme.md; sourceTree = "<group>"; };
+		FB723B2E2ED6F5DC00E04C71 /* FSKit-UnionfsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "FSKit-UnionfsTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FBB2CF382ED2238100A2413F /* FSKit-Unionfs.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "FSKit-Unionfs.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FBB2CF4A2ED223BD00A2413F /* unionfs.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.extensionkit-extension"; includeInIndex = 0; path = unionfs.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -124,6 +130,11 @@
 			path = "UnionFS-Helper";
 			sourceTree = "<group>";
 		};
+		FB723B2F2ED6F5DC00E04C71 /* FSKit-UnionfsTests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = "FSKit-UnionfsTests";
+			sourceTree = "<group>";
+		};
 		FBB2CF3A2ED2238100A2413F /* FSKit-Unionfs */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			path = "FSKit-Unionfs";
@@ -144,6 +155,14 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FB723B2B2ED6F5DC00E04C71 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FB723B3C2ED77E2B00E04C71 /* Command in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -173,6 +192,7 @@
 				FBB2CF3A2ED2238100A2413F /* FSKit-Unionfs */,
 				FBB2CF4B2ED223BD00A2413F /* FSKit-Extension */,
 				FB34D8DE2ED376F5009243D4 /* UnionFS-Helper */,
+				FB723B2F2ED6F5DC00E04C71 /* FSKit-UnionfsTests */,
 				FBBE2A8F2ED340D30004816C /* Frameworks */,
 				FBB2CF392ED2238100A2413F /* Products */,
 			);
@@ -184,6 +204,7 @@
 				FBB2CF382ED2238100A2413F /* FSKit-Unionfs.app */,
 				FBB2CF4A2ED223BD00A2413F /* unionfs.appex */,
 				FB34D8DD2ED376F5009243D4 /* UnionFS-Helper */,
+				FB723B2E2ED6F5DC00E04C71 /* FSKit-UnionfsTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -219,6 +240,30 @@
 			productName = "UnionFS-Helper";
 			productReference = FB34D8DD2ED376F5009243D4 /* UnionFS-Helper */;
 			productType = "com.apple.product-type.tool";
+		};
+		FB723B2D2ED6F5DC00E04C71 /* FSKit-UnionfsTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FB723B342ED6F5DC00E04C71 /* Build configuration list for PBXNativeTarget "FSKit-UnionfsTests" */;
+			buildPhases = (
+				FB723B2A2ED6F5DC00E04C71 /* Sources */,
+				FB723B2B2ED6F5DC00E04C71 /* Frameworks */,
+				FB723B2C2ED6F5DC00E04C71 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				FB723B332ED6F5DC00E04C71 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				FB723B2F2ED6F5DC00E04C71 /* FSKit-UnionfsTests */,
+			);
+			name = "FSKit-UnionfsTests";
+			packageProductDependencies = (
+				FB723B3B2ED77E2B00E04C71 /* Command */,
+			);
+			productName = "FSKit-UnionfsTests";
+			productReference = FB723B2E2ED6F5DC00E04C71 /* FSKit-UnionfsTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
 		};
 		FBB2CF372ED2238100A2413F /* FSKit-Unionfs */ = {
 			isa = PBXNativeTarget;
@@ -277,11 +322,15 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 2620;
+				LastSwiftUpdateCheck = 2610;
 				LastUpgradeCheck = 2620;
 				TargetAttributes = {
 					FB34D8DC2ED376F5009243D4 = {
 						CreatedOnToolsVersion = 26.2;
+					};
+					FB723B2D2ED6F5DC00E04C71 = {
+						CreatedOnToolsVersion = 26.1.1;
+						TestTargetID = FBB2CF372ED2238100A2413F;
 					};
 					FBB2CF372ED2238100A2413F = {
 						CreatedOnToolsVersion = 26.1.1;
@@ -302,6 +351,7 @@
 			minimizedProjectReferenceProxies = 1;
 			packageReferences = (
 				FBBE2A922ED342710004816C /* XCRemoteSwiftPackageReference "Semaphore" */,
+				FB723B3A2ED77E2B00E04C71 /* XCRemoteSwiftPackageReference "Command" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = FBB2CF392ED2238100A2413F /* Products */;
@@ -311,11 +361,19 @@
 				FBB2CF372ED2238100A2413F /* FSKit-Unionfs */,
 				FBB2CF492ED223BD00A2413F /* unionfs */,
 				FB34D8DC2ED376F5009243D4 /* UnionFS-Helper */,
+				FB723B2D2ED6F5DC00E04C71 /* FSKit-UnionfsTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		FB723B2C2ED6F5DC00E04C71 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		FBB2CF362ED2238100A2413F /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -337,8 +395,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FB723B282ED6633A00E04C71 /* Readme.md in Sources */,
 				FB34D8FD2ED37DA9009243D4 /* Constants.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FB723B2A2ED6F5DC00E04C71 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -346,7 +410,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FB723B292ED6633A00E04C71 /* Readme.md in Sources */,
 				FB34D8FB2ED37DA4009243D4 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -355,7 +418,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FB723B272ED6633A00E04C71 /* Readme.md in Sources */,
 				FB34D8FC2ED37DA9009243D4 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -367,6 +429,11 @@
 			isa = PBXTargetDependency;
 			target = FB34D8DC2ED376F5009243D4 /* UnionFS-Helper */;
 			targetProxy = FB34D8F52ED379C0009243D4 /* PBXContainerItemProxy */;
+		};
+		FB723B332ED6F5DC00E04C71 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = FBB2CF372ED2238100A2413F /* FSKit-Unionfs */;
+			targetProxy = FB723B322ED6F5DC00E04C71 /* PBXContainerItemProxy */;
 		};
 		FBB2CF532ED223BD00A2413F /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -401,6 +468,46 @@
 				SWIFT_APPROACHABLE_CONCURRENCY = YES;
 				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
 				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		FB723B352ED6F5DC00E04C71 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = P88CDRP8CR;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "io.noim.FSKit-UnionfsTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRING_CATALOG_GENERATE_SYMBOLS = NO;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FSKit-Unionfs.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/FSKit-Unionfs";
+			};
+			name = Debug;
+		};
+		FB723B362ED6F5DC00E04C71 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = P88CDRP8CR;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "io.noim.FSKit-UnionfsTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRING_CATALOG_GENERATE_SYMBOLS = NO;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FSKit-Unionfs.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/FSKit-Unionfs";
 			};
 			name = Release;
 		};
@@ -700,6 +807,15 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
+		FB723B342ED6F5DC00E04C71 /* Build configuration list for PBXNativeTarget "FSKit-UnionfsTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FB723B352ED6F5DC00E04C71 /* Debug */,
+				FB723B362ED6F5DC00E04C71 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		FBB2CF332ED2238100A2413F /* Build configuration list for PBXProject "FSKit-Unionfs" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -730,6 +846,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		FB723B3A2ED77E2B00E04C71 /* XCRemoteSwiftPackageReference "Command" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/tuist/Command.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.13.0;
+			};
+		};
 		FBBE2A922ED342710004816C /* XCRemoteSwiftPackageReference "Semaphore" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/groue/Semaphore";
@@ -741,6 +865,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		FB723B3B2ED77E2B00E04C71 /* Command */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = FB723B3A2ED77E2B00E04C71 /* XCRemoteSwiftPackageReference "Command" */;
+			productName = Command;
+		};
 		FBBE2A932ED342710004816C /* Semaphore */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = FBBE2A922ED342710004816C /* XCRemoteSwiftPackageReference "Semaphore" */;

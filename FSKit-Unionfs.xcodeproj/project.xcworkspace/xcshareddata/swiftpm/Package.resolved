@@ -1,6 +1,33 @@
 {
-  "originHash" : "4b82b539b9d2efbfd49d8e282dd86a1dd53cfd54c2f0751f7ba4026826783aa6",
+  "originHash" : "e49ef4330ba8bc506b6927ad6d9a5df2058c1276719ee5cd87a594bafe182b35",
   "pins" : [
+    {
+      "identity" : "command",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/tuist/Command.git",
+      "state" : {
+        "revision" : "079a7803b581d3022469b3a331bccd51d48d2fc0",
+        "version" : "0.13.0"
+      }
+    },
+    {
+      "identity" : "mockable",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/Kolos65/Mockable",
+      "state" : {
+        "revision" : "1e0d218b41aef515627a0fa7c98ca2b9d2833213",
+        "version" : "0.5.0"
+      }
+    },
+    {
+      "identity" : "path",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/tuist/Path",
+      "state" : {
+        "revision" : "7c74ac435e03a927c3a73134c48b61e60221abcb",
+        "version" : "0.3.8"
+      }
+    },
     {
       "identity" : "semaphore",
       "kind" : "remoteSourceControl",
@@ -8,6 +35,33 @@
       "state" : {
         "revision" : "2543679282aa6f6c8ecf2138acd613ed20790bc2",
         "version" : "0.1.0"
+      }
+    },
+    {
+      "identity" : "swift-log",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/apple/swift-log",
+      "state" : {
+        "revision" : "ce592ae52f982c847a4efc0dd881cc9eb32d29f2",
+        "version" : "1.6.4"
+      }
+    },
+    {
+      "identity" : "swift-syntax",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/swiftlang/swift-syntax.git",
+      "state" : {
+        "revision" : "4799286537280063c85a32f09884cfbca301b1a1",
+        "version" : "602.0.0"
+      }
+    },
+    {
+      "identity" : "xctest-dynamic-overlay",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/pointfreeco/xctest-dynamic-overlay",
+      "state" : {
+        "revision" : "4c27acf5394b645b70d8ba19dc249c0472d5f618",
+        "version" : "1.7.0"
       }
     }
   ],
