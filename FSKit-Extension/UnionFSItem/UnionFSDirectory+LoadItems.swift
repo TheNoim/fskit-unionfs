@@ -88,18 +88,22 @@ extension UnionFSDirectory {
         var finalItems: [UnionFSItem] = []
         
         for (_, sameName) in groupdByName {
+            /// Sort explained:
+            /// Priority number is sorted ascending. Lower value has higher priority.
+            /// A file has priority over a directory
+            
             let sortedByPriority = sameName.sorted(by: { a, b in
                 if let aAsDir = a as? UnionFSDirectory {
                     if let bAsDir = b as? UnionFSDirectory {
-                        return aAsDir.availableOnBranches.first!.prio > bAsDir.availableOnBranches.first!.prio
+                        return aAsDir.availableOnBranches.first!.prio < bAsDir.availableOnBranches.first!.prio
                     } else {
-                        return true
+                        return false
                     }
                 } else if let aAsFile = a as? UnionFSFile {
                     if let bAsFile = b as? UnionFSFile {
-                        return aAsFile.onBranch.prio > bAsFile.onBranch.prio
+                        return aAsFile.onBranch.prio < bAsFile.onBranch.prio
                     } else {
-                        return false
+                        return true
                     }
                 }
                 return false
