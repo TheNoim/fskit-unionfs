@@ -35,11 +35,11 @@ extension UnionFSVolume: FSVolume.Operations {
     }
     
     func mount(options: FSTaskOptions) async throws {
-        self.logger.info("Volume \(self.options.volumeName) (\(self.uuid.uuidString)) mounted")
+        self.logger.info("Volume \(self.options.volumeName, privacy: .public) (\(self.uuid.uuidString, privacy: .public)) mounted")
     }
     
     func unmount() async {
-        self.logger.info("Volume \(self.options.volumeName) (\(self.uuid.uuidString)) unmounted")
+        self.logger.info("Volume \(self.options.volumeName, privacy: .public) (\(self.uuid.uuidString, privacy: .public)) unmounted")
     }
     
     func createItem(named name: FSFileName, type: FSItem.ItemType, inDirectory directory: FSItem, attributes newAttributes: FSItem.SetAttributesRequest) async throws -> (FSItem, FSFileName) {

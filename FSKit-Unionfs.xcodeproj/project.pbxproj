@@ -50,13 +50,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 1;
 		};
-		FB34D8F02ED37989009243D4 /* CopyFiles */ = {
+		FB34D8F02ED37989009243D4 /* Copy Files */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = Contents/Library/LaunchDaemons;
 			dstSubfolderSpec = 1;
 			files = (
 			);
+			name = "Copy Files";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		FB34D8F32ED379A2009243D4 /* CopyFiles */ = {
@@ -113,7 +114,7 @@
 /* Begin PBXFileSystemSynchronizedGroupBuildPhaseMembershipExceptionSet section */
 		FB34D8F22ED3799F009243D4 /* Exceptions for "UnionFS-Helper" folder in "Copy Files" phase from "FSKit-Unionfs" target */ = {
 			isa = PBXFileSystemSynchronizedGroupBuildPhaseMembershipExceptionSet;
-			buildPhase = FB34D8F02ED37989009243D4 /* CopyFiles */;
+			buildPhase = FB34D8F02ED37989009243D4 /* Copy Files */;
 			membershipExceptions = (
 				"io.noim.FSKit-Unionfs.helper.plist",
 			);
@@ -274,7 +275,7 @@
 				FBB2CF362ED2238100A2413F /* Resources */,
 				FBB2CF592ED223BD00A2413F /* Embed ExtensionKit Extensions */,
 				FB34D8F32ED379A2009243D4 /* CopyFiles */,
-				FB34D8F02ED37989009243D4 /* CopyFiles */,
+				FB34D8F02ED37989009243D4 /* Copy Files */,
 			);
 			buildRules = (
 			);

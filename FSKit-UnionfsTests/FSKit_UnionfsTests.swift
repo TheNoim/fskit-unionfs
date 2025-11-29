@@ -10,31 +10,28 @@ import Foundation
 import OSLog
 import Command
 
-struct FSKit_UnionfsTests : ~Copyable {
+@Suite("Basic Test Suite")
+class FSKit_UnionfsTests {
     static let logger = Logger()
-    
-    static var createdRoots: [URL] = []
-    
+        
     static func newTemporaryRoot() -> URL {
         let temporaryDir = FileManager.default.temporaryDirectory
         let name = UUID().uuidString
         let root = temporaryDir.appending(path: name, directoryHint: .isDirectory)
         try! FileManager.default.createDirectory(at: root, withIntermediateDirectories: true)
-        createdRoots.append(root)
         return root
     }
     
+    init() {
+        // I hate it
+        TestHelper.kill_fskitd()
+    }
+    
     deinit {
-        let commandRunner = CommandRunner()
-        
-        let _ = commandRunner.run(arguments: [
+        let _ = CommandRunner().run(arguments: [
             "killall",
             "unionfs"
         ])
-        
-        for root in FSKit_UnionfsTests.createdRoots {
-            try? FileManager.default.removeItem(at: root)
-        }
     }
 
     @Test func testTreeBuilder() async throws {
@@ -60,8 +57,10 @@ struct FSKit_UnionfsTests : ~Copyable {
     }
 
     @Test func basicMountTest() async throws {
+        let testHelper = TestHelper()
         let temp = FSKit_UnionfsTests.newTemporaryRoot()
         defer {
+            testHelper.disposeSync()
             try? FileManager.default.removeItem(at: temp)
         }
         
@@ -77,54 +76,34 @@ struct FSKit_UnionfsTests : ~Copyable {
             }
         }.writeTree(to: temp)
         
-        let commandRunner = CommandRunner()
+        let mntLocation = try await testHelper.mount(with: testRoot, mnt: "mnt", branches: [
+            .init("branch_a"),
+            .init("branch_b")
+        ])
         
-        var mountComponents = URLComponents()
-        mountComponents.scheme = "unionfs"
-        mountComponents.host = "test"
-        mountComponents.queryItems = [
-            URLQueryItem(name: "br", value: testRoot.appending(path: "branch_a", directoryHint: .isDirectory).path(percentEncoded: false)),
-            URLQueryItem(name: "br", value: testRoot.appending(path: "branch_b", directoryHint: .isDirectory).path(percentEncoded: false))
-        ]
+        try #require(FileManager.default.fileExists(atPath: testRoot.withPath("mnt/a.txt", directoryHint: .notDirectory)), "a.txt should exist in mnt location")
+        try #require(FileManager.default.fileExists(atPath: testRoot.withPath("mnt/b.txt", directoryHint: .notDirectory)), "b.txt should exist in mnt location")
         
-        let mntLocation = testRoot.appending(path: "mnt", directoryHint: .isDirectory).path(percentEncoded: false)
-        
-        try! await commandRunner.run(arguments: [
-            "mount",
-            "-t",
-            "Unionfs",
-            mountComponents.url!.absoluteString,
-            mntLocation
-        ]).awaitCompletion()
-        
-        #expect(FileManager.default.fileExists(atPath: testRoot.appending(path: "mnt/a.txt", directoryHint: .notDirectory).path(percentEncoded: false)))
-        #expect(FileManager.default.fileExists(atPath: testRoot.appending(path: "mnt/b.txt", directoryHint: .notDirectory).path(percentEncoded: false)))
-        
-        let originalFileAAttributes = try! FileManager.default.attributesOfItem(atPath: testRoot.appending(path: "branch_a/a.txt", directoryHint: .notDirectory).path(percentEncoded: false))
-        let fileAMntAttributes = try! FileManager.default.attributesOfItem(atPath: testRoot.appending(path: "mnt/a.txt", directoryHint: .notDirectory).path(percentEncoded: false))
+        let originalFileAAttributes = try! FileManager.default.attributesOfItem(atPath: testRoot.withPath("branch_a/a.txt", directoryHint: .notDirectory))
+        let fileAMntAttributes = try! FileManager.default.attributesOfItem(atPath: mntLocation.withPath("a.txt", directoryHint: .notDirectory))
         
         let originalFileAOwner = originalFileAAttributes[.ownerAccountID] as! Int
         let unionFileOwner = fileAMntAttributes[.ownerAccountID] as! Int
     
-        #expect(originalFileAOwner == unionFileOwner)
+        #expect(originalFileAOwner == unionFileOwner, "The owner id of the file in mnt should equal the original file")
         
         let originalCreationDate = originalFileAAttributes[.creationDate] as! Date
         let unionCreationDate = fileAMntAttributes[.creationDate] as! Date
         
-        #expect(originalCreationDate == unionCreationDate)
-    
-        
-        try? await commandRunner.run(arguments: [
-            "umount",
-            "-f",
-            mntLocation
-        ]).awaitCompletion()
+        #expect(originalCreationDate == unionCreationDate, "The creation date of the mnt file should equal the original file")
     }
     
     /// Test the branch sort algorithm
     @Test func testBranchPriorities() async throws {
+        let testHelper = TestHelper()
         let temp = FSKit_UnionfsTests.newTemporaryRoot()
         defer {
+            testHelper.disposeSync()
             try? FileManager.default.removeItem(at: temp)
         }
      
@@ -147,34 +126,19 @@ struct FSKit_UnionfsTests : ~Copyable {
             }
         }.writeTree(to: temp)
         
-        let commandRunner = CommandRunner()
+        let mntLocation = try await testHelper.mount(with: testRoot, mnt: "mnt", branches: [
+            .init("branch_a"),
+            .init("branch_b")
+        ])
         
-        var mountComponents = URLComponents()
-        mountComponents.scheme = "unionfs"
-        mountComponents.host = "test"
-        mountComponents.queryItems = [
-            URLQueryItem(name: "br", value: testRoot.appending(path: "branch_a", directoryHint: .isDirectory).path(percentEncoded: false)),
-            URLQueryItem(name: "br", value: testRoot.appending(path: "branch_b", directoryHint: .isDirectory).path(percentEncoded: false))
-        ]
+        try #require(FileManager.default.fileExists(atPath: mntLocation.withPath("a.txt", directoryHint: .notDirectory)), "a.txt should exist in mnt location")
+        try #require(FileManager.default.fileExists(atPath: mntLocation.withPath("b.txt", directoryHint: .notDirectory)), "b.txt should exist in mnt location")
         
-        let mntLocation = testRoot.appending(path: "mnt", directoryHint: .isDirectory).path(percentEncoded: false)
+        let originalBOnBranchAAttributes = try! FileManager.default.attributesOfItem(atPath: testRoot.withPath("branch_a/b.txt", directoryHint: .notDirectory))
         
-        try! await commandRunner.run(arguments: [
-            "mount",
-            "-t",
-            "Unionfs",
-            mountComponents.url!.absoluteString,
-            mntLocation
-        ]).awaitCompletion()
+        let originalBOnBranchBAttributes = try! FileManager.default.attributesOfItem(atPath: testRoot.withPath("branch_b/b.txt", directoryHint: .notDirectory))
         
-        #expect(FileManager.default.fileExists(atPath: testRoot.appending(path: "mnt/a.txt", directoryHint: .notDirectory).path(percentEncoded: false)))
-        #expect(FileManager.default.fileExists(atPath: testRoot.appending(path: "mnt/b.txt", directoryHint: .notDirectory).path(percentEncoded: false)))
-        
-        let originalBOnBranchAAttributes = try! FileManager.default.attributesOfItem(atPath: testRoot.appending(path: "branch_a/b.txt", directoryHint: .notDirectory).path(percentEncoded: false))
-        
-        let originalBOnBranchBAttributes = try! FileManager.default.attributesOfItem(atPath: testRoot.appending(path: "branch_b/b.txt", directoryHint: .notDirectory).path(percentEncoded: false))
-        
-        let bAttributesOnUnion = try! FileManager.default.attributesOfItem(atPath: testRoot.appending(path: "mnt/b.txt", directoryHint: .notDirectory).path(percentEncoded: false))
+        let bAttributesOnUnion = try! FileManager.default.attributesOfItem(atPath: mntLocation.withPath("b.txt", directoryHint: .notDirectory))
         
         let originalBOnBranchACreationDate = originalBOnBranchAAttributes[.creationDate] as! Date
         let originalBOnBranchBCreationDate = originalBOnBranchBAttributes[.creationDate] as! Date
@@ -184,12 +148,6 @@ struct FSKit_UnionfsTests : ~Copyable {
         #expect(originalBOnBranchBCreationDate != creationDateBOnUnion)
         
         // a file should have a higher priority than a directory. Therfore, b/hello (file) should override a/hello/world.txt (file) even though branch a has a higher prio
-        #expect(FileManager.default.fileExists(atPath: testRoot.appending(path: "mnt/hello/world.txt", directoryHint: .notDirectory).path(percentEncoded: false)) == false)
-        
-        try? await commandRunner.run(arguments: [
-            "umount",
-            "-f",
-            mntLocation
-        ]).awaitCompletion()
+        #expect(FileManager.default.fileExists(atPath: mntLocation.withPath("hello/world.txt", directoryHint: .notDirectory)) == false)
     }
 }

@@ -8,11 +8,5 @@
 	</array>
 	<key>com.apple.developer.fskit.fsmodule</key>
 	<true/>
-	<key>com.apple.security.exception.iokit-user-client-class</key>
-	<string>AppleLIFSUserClient</string>
-	<key>com.apple.security.temporary-exception.mach-lookup.global-name</key>
-	<array>
-		<string>io.noim.FSKit-Unionfs.helper</string>
-	</array>
 </dict>
 </plist>
