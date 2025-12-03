@@ -12,15 +12,11 @@ extension UnionFSVolume: FSVolume.Operations {
     func activate(options: FSTaskOptions) async throws -> FSItem {
         let rootDirectory = UnionFSDirectory(name: self.options.volumeName, availableOnBranches: self.options.branches)
         
-        rootDirectory.nativeAttributes = [
-            .ownerAccountID: 501,
-            .groupOwnerAccountID: 20,
-            .creationDate: NSDate.now,
-            .modificationDate: NSDate.now,
-            .type: FileAttributeType.typeDirectory,
-            .immutable: false,
-            .size: 96,
-        ]
+        let now = timespec(from: Date.now)
+        
+        let attributes = FSAttributes(accessTime: now, birthTime: now, blockSize: 0, blocks: 0, changeTime: now, dev: 0, flags: 0, gen: 0, gid: getegid(), inode: 0, lspare: 0, mode: 0o755, modifiedTime: now, linkCount: 2, qspare: (0, 0), rdev: 0, size: 0, uid: geteuid(), type: .directory)
+        
+        rootDirectory.fsAttributes = attributes
         
         self.root = rootDirectory
         
@@ -98,7 +94,8 @@ extension UnionFSVolume: FSVolume.Operations {
             self.logger.debug("attributes req failed")
             throw fs_errorForPOSIXError(POSIXError.ENOENT.rawValue)
         }
-        return unionItem.attributes
+        
+        return unionItem.fulfillAttribute(request: desiredAttributes)
     }
     
     func setAttributes(_ newAttributes: FSItem.SetAttributesRequest, on item: FSItem) async throws -> FSItem.Attributes {
@@ -123,16 +120,16 @@ extension UnionFSVolume: FSVolume.Operations {
 
                 if attributes == nil && !dir.isRoot {
                     self.logger.debug("Pack . dir")
-                    packer.packEntry(name: FSFileName(string: "."), itemType: .directory, itemID: dir.fileId, nextCookie: cookie, attributes: attributes != nil ? dir.attributes : nil)
+                    packer.packEntry(name: FSFileName(string: "."), itemType: .directory, itemID: dir.fileId, nextCookie: cookie, attributes: attributes != nil ? dir.fulfillAttribute(request: attributes!) : nil)
                     if let parent = dir.parent {
                         self.logger.debug("Pack .. dir")
-                        packer.packEntry(name: FSFileName(string: ".."), itemType: .directory, itemID: parent.fileId, nextCookie: cookie, attributes: attributes != nil ? parent.attributes : nil)
+                        packer.packEntry(name: FSFileName(string: ".."), itemType: .directory, itemID: parent.fileId, nextCookie: cookie, attributes: attributes != nil ? parent.fulfillAttribute(request: attributes!) : nil)
                     }
                 }
 
                 for item in items {
                     self.logger.debug("Pack item with name \(item.name.string ?? "nil", privacy: .public)")
-                    packer.packEntry(name: item.name, itemType: item.type, itemID: item.fileId, nextCookie: cookie, attributes: attributes != nil ? item.attributes : nil)
+                    packer.packEntry(name: item.name, itemType: item.type, itemID: item.fileId, nextCookie: cookie, attributes: attributes != nil ? item.fulfillAttribute(request: attributes!) : nil)
                 }
                 
                 self.logger.debug("End of enumerateDirectory")

@@ -33,6 +33,13 @@ class UnionFSDirectory: UnionFSItem {
         self.init(availableOnBranches: availableOnBranches, name: fsName)
     }
     
+    convenience init(name: String, availableOnBranches: [UnionBranch], parent: UnionFSDirectory, fsAttributes: FSAttributes) {
+        let fsName = FSFileName(string: name)
+        self.init(name: name, availableOnBranches: availableOnBranches)
+        self.parent = parent
+        self.fsAttributes = fsAttributes
+    }
+    
     var rootRelativePath: String {
         guard let parent = parent else {
             return "" // is root

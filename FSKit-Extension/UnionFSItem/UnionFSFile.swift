@@ -17,4 +17,9 @@ final class UnionFSFile: UnionFSItem {
         super.init(name: name, type: .file)
         self.name = name
     }
+    
+    convenience init(directory: UnionFSDirectory, name: String, branch: UnionBranch, fsAttributes: FSAttributes) {
+        self.init(directory: directory, name: FSFileName(string: name), branch: branch)
+        self.fsAttributes = fsAttributes
+    }
 }

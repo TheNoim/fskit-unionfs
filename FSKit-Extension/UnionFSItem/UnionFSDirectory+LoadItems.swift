@@ -28,48 +28,21 @@ extension UnionFSDirectory {
                     guard let urlInBranch = branch.urlInBranchFor(dir: self) else {
                         throw UnionFSItemError.failedToCreateDirectoryPath
                     }
+            
+                    UnionFSDirectory.logger.debug("Call readDirPlus for \(urlInBranch, privacy: .public)")
                     
-                    UnionFSDirectory.logger.debug("Call contentsOfDirectory for \(urlInBranch, privacy: .public)")
-                    
-                    let urls = try FileManager.default.contentsOfDirectory(at: urlInBranch, includingPropertiesForKeys: nil)
-                    
-                    let urlAttributes = try await withThrowingTaskGroup(of: (URL, [FileAttributeKey: Any], PosixStat).self) { attributeGroup in
-                        for url in urls {
-                            attributeGroup.addTask {
-                                UnionFSDirectory.logger.debug("Call attributesOfItem for \(url.path(percentEncoded: false), privacy: .public)")
-                                let path = url.path(percentEncoded: false)
-                                let attributes = try FileManager.default.attributesOfItem(atPath: path)
-                                var st = stat()
-                                stat(path, &st)
-                                let posixStat = PosixStat(mode: UInt32(st.st_mode), flags: UInt32(st.st_flags), birthTime: st.st_birthtimespec, changeTime: st.st_ctimespec, modifyTime: st.st_mtimespec, accessTime: st.st_atimespec, linkCount: UInt32(st.st_nlink))
-                                return (url, attributes, posixStat)
-                            }
-                        }
-                        
-                        var attributes: [(URL, [FileAttributeKey: Any], PosixStat)] = []
-                        
-                        for try await attr in attributeGroup {
-                            attributes.append(attr)
-                        }
-                        
-                        return attributes
-                    }
-                    
-                    for (url, attr, posixStat) in urlAttributes {
-                        if let type = attr[.type] as? FileAttributeType {
-                            if type == .typeRegular {
-                                let file = UnionFSFile(directory: self, name: FSFileName(string: url.lastPathComponent), branch: branch)
-                                file.nativeAttributes = attr
-                                file.posixStat = posixStat
-                                branchItems.append(file)
-                            } else if type == .typeDirectory {
-                                let dir = UnionFSDirectory(name: url.lastPathComponent, availableOnBranches: [branch])
-                                dir.parent = self
-                                dir.nativeAttributes = attr
-                                dir.posixStat = posixStat
+                    if let entries = try? readDirPlus(at: urlInBranch) {
+                        for entry in entries {
+                            if case .directory = entry.type {
+                                let dir = UnionFSDirectory(name: entry.name, availableOnBranches: [branch], parent: self, fsAttributes: FSAttributes(darwinStat: entry.info, type: entry.type))
                                 branchItems.append(dir)
+                            } else if case .regular = entry.type {
+                                let file = UnionFSFile(directory: self, name: entry.name, branch: branch, fsAttributes: FSAttributes(darwinStat: entry.info, type: entry.type))
+                                branchItems.append(file)
                             }
                         }
+                    } else {
+                        UnionFSDirectory.logger.error("Call readDirPlus for \(urlInBranch, privacy: .public) failed")
                     }
                     
                     return branchItems

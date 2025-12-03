@@ -25,7 +25,7 @@ final class UnionFS : FSUnaryFileSystem & FSUnaryFileSystemOperations {
     }
     
     func loadResource(resource: FSResource, options: FSTaskOptions, replyHandler: @escaping (FSVolume?, (any Error)?) -> Void) {
-        logger.info("Load resource")
+        logger.info("Load resource. Options: \(options.taskOptions, privacy: .public)")
         
         do {
             let options = try self.validateResource(resource: resource)
