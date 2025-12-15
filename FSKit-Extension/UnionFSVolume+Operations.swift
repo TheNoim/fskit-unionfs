@@ -7,6 +7,13 @@
 
 import FSKit
 import Foundation
+import RegexBuilder
+
+let doubleRegex = Regex {
+    Anchor.startOfSubject
+    Character(".")
+    Character("_")
+}
 
 extension UnionFSVolume: FSVolume.Operations {
     func activate(options: FSTaskOptions) async throws -> FSItem {
@@ -44,6 +51,9 @@ extension UnionFSVolume: FSVolume.Operations {
     }
     
     func lookupItem(named name: FSFileName, inDirectory directory: FSItem) async throws -> (FSItem, FSFileName) {
+        if (name.string?.starts(with: doubleRegex) ?? false) {
+            throw fs_errorForPOSIXError(POSIXError.ENOENT.rawValue)
+        }
         self.logger.info("lookupItem with name \(name.string ?? "nil", privacy: .public)")
         guard let unionDir = directory as? UnionFSDirectory else {
             self.logger.info("Can not cast as dir")
