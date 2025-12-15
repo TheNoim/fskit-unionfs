@@ -153,29 +153,6 @@ extension UnionFSVolume: FSVolume.Operations {
         }
     }
     
-//    func enumerateDirectory(_ directory: FSItem, startingAt cookie: FSDirectoryCookie, verifier: FSDirectoryVerifier, attributes: FSItem.GetAttributesRequest?, packer: FSDirectoryEntryPacker) async throws -> FSDirectoryVerifier {
-//        self.logger.debug("enumerateDirectory")
-//        
-//        guard let dir = directory as? UnionFSDirectory else {
-//            throw fs_errorForPOSIXError(POSIXError.ENOENT.rawValue)
-//        }
-//        
-//        let items = try await dir.getItems()
-//        
-//        if attributes == nil && !dir.isRoot {
-//            packer.packEntry(name: FSFileName(string: "."), itemType: .directory, itemID: dir.fileId, nextCookie: cookie, attributes: dir.attributes)
-//            if let parent = dir.parent {
-//                packer.packEntry(name: FSFileName(string: ".."), itemType: .directory, itemID: parent.fileId, nextCookie: cookie, attributes: parent.attributes)
-//            }
-//        }
-//        
-//        for item in items {
-//            packer.packEntry(name: item.name, itemType: item.type, itemID: item.fileId, nextCookie: cookie, attributes: item.attributes)
-//        }
-//        
-//        return verifier
-//    }
-    
     func synchronize(flags: FSSyncFlags) async throws {
         self.logger.debug("Called synchronize")
     }
