@@ -47,7 +47,26 @@ extension UnionFSVolume: FSVolume.Operations {
     
     func createItem(named name: FSFileName, type: FSItem.ItemType, inDirectory directory: FSItem, attributes newAttributes: FSItem.SetAttributesRequest) async throws -> (FSItem, FSFileName) {
         self.logger.debug("createItem")
-        throw fs_errorForPOSIXError(POSIXError.EIO.rawValue)
+        
+        throw fs_errorForPOSIXError(POSIXError.ENOTSUP.rawValue)
+        
+//        guard let dir = directory as? UnionFSDirectory else {
+//            self.logger.error("createItem failed, because directory is not an directory")
+//            throw fs_errorForPOSIXError(POSIXError.ENOTDIR.rawValue)
+//        }
+//        
+//        let nextBranch = self.pickNextBranch()
+//        
+//        if case .file = type {
+//            
+//        } else if case .directory = type {
+//            guard let pathToCreate = nextBranch.urlInBranchFor(dir: dir)?.appending(path: name.string!, directoryHint: .isDirectory).absoluteString else {
+//                throw fs_errorForPOSIXError(POSIXError.EBADRPC.rawValue) // TODO: use diff err
+//            }
+//            try mkdirPlus(at: pathToCreate, recursive: true, attributes: newAttributes)
+//        } else {
+//            throw fs_errorForPOSIXError(POSIXError.ENODEV.rawValue)
+//        }
     }
     
     func lookupItem(named name: FSFileName, inDirectory directory: FSItem) async throws -> (FSItem, FSFileName) {

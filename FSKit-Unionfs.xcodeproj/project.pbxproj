@@ -93,6 +93,16 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		FB0DCEE92EF19EC900897A11 /* Exceptions for "FSKit-Extension" folder in "FSKit-UnionfsTests" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				"FSUtility/Apply Attributes.swift",
+				"FSUtility/MKDir Wrapper.swift",
+				"FSUtility/Stat Wrapper.swift",
+				Timespec.swift,
+			);
+			target = FB723B2D2ED6F5DC00E04C71 /* FSKit-UnionfsTests */;
+		};
 		FB34D8EC2ED377CA009243D4 /* Exceptions for "UnionFS-Helper" folder in "unionfs" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
@@ -145,6 +155,7 @@
 			isa = PBXFileSystemSynchronizedRootGroup;
 			exceptions = (
 				FBB2CF552ED223BD00A2413F /* Exceptions for "FSKit-Extension" folder in "unionfs" target */,
+				FB0DCEE92EF19EC900897A11 /* Exceptions for "FSKit-Extension" folder in "FSKit-UnionfsTests" target */,
 			);
 			path = "FSKit-Extension";
 			sourceTree = "<group>";

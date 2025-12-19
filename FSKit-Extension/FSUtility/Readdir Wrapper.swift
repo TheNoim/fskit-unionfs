@@ -7,6 +7,7 @@
 
 import Foundation
 import Darwin   // Glibc on Linux
+import FSKit
 
 enum FileType {
     case regular, directory, symlink, other, unknown
@@ -21,7 +22,7 @@ struct DirEntryPlus {
 func readDirPlus(at path: URL) throws -> [DirEntryPlus] {
     try path.withUnsafeFileSystemRepresentation { cPath in
         guard let dir = opendir(cPath) else {
-            throw NSError(domain: NSPOSIXErrorDomain, code: Int(errno))
+            throw fs_errorForPOSIXError(errno)
         }
         defer { closedir(dir) }
 
@@ -31,7 +32,7 @@ func readDirPlus(at path: URL) throws -> [DirEntryPlus] {
         while true {
             errno = 0
             guard let entry = readdir(dir) else {
-                if errno != 0 { throw NSError(domain: NSPOSIXErrorDomain, code: Int(errno)) }
+                if errno != 0 { throw fs_errorForPOSIXError(errno) }
                 break
             }
 
@@ -53,7 +54,7 @@ func readDirPlus(at path: URL) throws -> [DirEntryPlus] {
                     fstatat(dfd, $0, &st, AT_SYMLINK_NOFOLLOW)
                 }
             }
-            if r != 0 { throw NSError(domain: NSPOSIXErrorDomain, code: Int(errno)) }
+            if r != 0 { throw fs_errorForPOSIXError(errno) }
 
             // file type: prefer d_type, fall back to st_mode
             let type: FileType = {
